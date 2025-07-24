@@ -92,7 +92,7 @@ public abstract class Conta implements IConta {
 	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", saldo=" + String.format("%.2f", saldo) + ", agencia=" + agencia
-				+ ", AGENCIA_PADRAO=" + AGENCIA_PADRAO + "]";
+				+ "]";
 	}
 
 }
