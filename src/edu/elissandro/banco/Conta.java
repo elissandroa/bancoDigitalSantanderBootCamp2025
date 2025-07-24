@@ -8,7 +8,7 @@ public abstract class Conta implements IConta {
 	private double saldo;
 	private Integer agencia;
 	private final Integer AGENCIA_PADRAO = 1;
-	
+
 	public Conta(Integer numero, Integer agencia) {
 		this.numero = numero++;
 		this.agencia = AGENCIA_PADRAO;
@@ -50,48 +50,49 @@ public abstract class Conta implements IConta {
 
 	@Override
 	public void sacar(double valor) {
-		if(valor <= getSaldo()) {
+		if (valor <= getSaldo()) {
 			saldo -= valor;
 		} else {
 			System.out.println("Saldo insuficiente para saque.");
 		}
-		
+
 	}
 
 	@Override
 	public void depositar(double valor) {
-		if(valor > 0) {
+		if (valor > 0) {
 			saldo += valor;
 		} else {
 			System.out.println("Valor de depósito inválido.");
 		}
-		
+
 	}
 
 	@Override
 	public void transferir(double valor, IConta contaDestino) {
-		if(valor <= getSaldo()) {
+		if (valor <= getSaldo()) {
 			sacar(valor);
 			contaDestino.depositar(valor);
 		} else {
 			System.out.println("Saldo insuficiente para transferência.");
 		}
-		
-		System.out.println("Transferência de R$" + valor + " realizada com sucesso para a conta " + ((Conta) contaDestino).getNumero() + ".");
-		
+
+		System.out.println("Transferência de R$" + String.format("%.2f", valor) + " realizada com sucesso para a conta "
+				+ ((Conta) contaDestino).getNumero() + ".");
+
+	}
+
+	protected void imprimirInfosComuns() {
+		System.out.println("Número: " + getNumero());
+		System.out.println("Agência: " + getAgencia());
+		System.out.println("Saldo: R$ " + String.format("%.2f", getSaldo()));
+		System.out.println("======================");
 	}
 
 	@Override
-	public void imprimirExtrato() {
-		System.out.println("=== Extrato da Conta ===");
-		System.out.println("Número da Conta: " + getNumero());
-		System.out.println("Agência: " + getAgencia());
-		System.out.println("Saldo Atual: R$" + getSaldo());
-		System.out.println("=========================");
-		
+	public String toString() {
+		return "Conta [numero=" + numero + ", saldo=" + String.format("%.2f", saldo) + ", agencia=" + agencia
+				+ ", AGENCIA_PADRAO=" + AGENCIA_PADRAO + "]";
 	}
 
-	
-	
-	
 }
