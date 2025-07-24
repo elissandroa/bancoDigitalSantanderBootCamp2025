@@ -17,6 +17,12 @@ O objetivo é simular as funcionalidades essenciais de um banco digital moderno:
 Tudo isso com código limpo, organizado e pronto para escalar 🚀
 
 ---
+Diagrama de Classes
+
+<div align="center">
+<img src="https://github.com/elissandroa/bancoDigitalSantanderBootCamp2025/blob/main/BancoDigital.png" width="620px" />
+</div>  
+
 
 ## 👨‍💻 Por que este projeto é especial?
 
